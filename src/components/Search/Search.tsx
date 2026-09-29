@@ -1,4 +1,4 @@
-export const Search = ({}) => {
+export const Search = () => {
   return (
     <div className="search">
       <input
