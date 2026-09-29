@@ -4,11 +4,13 @@ import type { MenuItem } from "../../types/menu";
 import { Filters } from "../Filters/Filters";
 import { StopList } from "../StopList/StopList";
 import React from "react";
+import type { Category } from "../../types/category";
 
 const menuItems = menu as MenuItem[];
 
 export const Main = () => {
   const [search, setSearch] = React.useState("");
+  const [category, setCategory] = React.useState<Category>("all");
 
   const filteredItems = menuItems.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase()),
@@ -23,7 +25,12 @@ export const Main = () => {
             <p className="menu-text">
               Все доступные позиции, которые сейчас в продаже
             </p>
-            <Filters search={search} setSearch={setSearch} />
+            <Filters
+              search={search}
+              category={category}
+              setCategory={setCategory}
+              setSearch={setSearch}
+            />
             <MenuList items={filteredItems} />
           </div>
           <div className="stop-list">
