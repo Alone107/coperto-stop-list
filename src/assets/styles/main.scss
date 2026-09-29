@@ -1205,3 +1205,9 @@ input[type="time"]:focus {
   opacity: 0.65;
   transform: none;
 }
+
+.form-row.is-error select,
+.form-row.is-error textarea,
+.form-row.is-error input {
+  border-color: #c94c3b;
+}

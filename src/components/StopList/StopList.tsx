@@ -30,7 +30,13 @@ export const StopList = () => {
 
         return <StopListItem item={menuItem} entry={entry} />;
       })}
-      {stopListEntries.length === 0 && <div>Все позиции в продаже</div>}
+      {stopListEntries.length === 0 && (
+        <div className="stop-list__empty">
+          <span className="stop-list__empty-icon">✓</span>
+          <strong>Все позиции в продаже</strong>
+          <p>Сейчас в стоп-листе нет позиций</p>
+        </div>
+      )}
     </div>
   );
 };

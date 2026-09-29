@@ -26,7 +26,9 @@ export const StopListItem = ({ item, entry }: StopListItemProps) => {
       <div className="stop-item-info">
         <h3 className="stop-item-name">{item.name}</h3>
         <div className="stop-item-reason">{reasonLabels[entry.reason]}</div>
-        <div className="stop-item-comment">{entry.comment}</div>
+        {entry.comment && (
+          <div className="stop-item-comment">{entry.comment}</div>
+        )}
         <div className="stop-item-returnAt">
           Вернётся в меню: {entry.returnAt}
         </div>

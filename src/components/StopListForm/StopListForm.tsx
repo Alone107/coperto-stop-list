@@ -4,6 +4,7 @@ import type { MenuItem } from "../../types/menu";
 
 import { useDispatch } from "react-redux";
 import type { StopListEntry } from "../../types/stopListEntry";
+import { categoryLabels } from "../../utils/categoryLabels";
 
 type StopListFormProps = {
   item: MenuItem;
@@ -61,28 +62,35 @@ export const StopListForm = ({ item }: StopListFormProps) => {
       return;
     }
 
-    setIsSubmitting(true);
-
     if (hasErrors || reason === null) {
       return;
     }
 
-    setTimeout(() => {
-      const newEntry: StopListEntry = {
-        itemId: item.id,
-        reason,
-        comment,
-        returnAt,
-        createdAt: new Date().toISOString(),
-      };
+    const newEntry: StopListEntry = {
+      itemId: item.id,
+      reason,
+      comment,
+      returnAt,
+      createdAt: new Date().toISOString(),
+    };
 
+    setIsSubmitting(true);
+
+    setTimeout(() => {
       dispatch(addToStopList(newEntry));
       dispatch(selectItem(null));
     }, 1000);
   };
 
   return (
-    <div className="list-form" onClick={() => dispatch(selectItem(null))}>
+    <div
+      className="list-form"
+      onClick={() => {
+        if (!isSubmitting) {
+          dispatch(selectItem(null));
+        }
+      }}
+    >
       <form
         action=""
         onClick={(event) => event.stopPropagation()}
@@ -102,14 +110,16 @@ export const StopListForm = ({ item }: StopListFormProps) => {
           </div>
           <div className="card-form-info">
             <h3 className="card-form-info-name">{item.name}</h3>
-            <div className="card-form-info-category">{item.category}</div>
+            <div className="card-info-category">
+              {categoryLabels[item.category]}
+            </div>
             <div className="card-form-info-price">{item.price} ₽</div>
           </div>
           <div className="card-form-stock">
             <div className="card-form-stock-text">{item.remainder} порций</div>
           </div>
         </div>
-        <div className="form-row">
+        <div className={`form-row ${errors.reason ? "is-error" : ""}`}>
           <label htmlFor="reason">Причина</label>
           <select
             name=""
@@ -130,7 +140,7 @@ export const StopListForm = ({ item }: StopListFormProps) => {
           {errors.reason && <div className="error-text">{errors.reason}</div>}
         </div>
 
-        <div className="form-row">
+        <div className={`form-row ${errors.reason ? "is-error" : ""}`}>
           <label htmlFor="comment">Комментарий</label>
           <textarea
             name=""
@@ -142,7 +152,7 @@ export const StopListForm = ({ item }: StopListFormProps) => {
           {errors.comment && <div className="error-text">{errors.comment}</div>}
         </div>
 
-        <div className="form-row">
+        <div className={`form-row ${errors.reason ? "is-error" : ""}`}>
           <label htmlFor="returnAt">Время предполагаемого возврата</label>
           <input
             type="time"
