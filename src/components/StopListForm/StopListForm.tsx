@@ -1,10 +1,10 @@
 import type { MenuItem } from "../../types/menu";
 
-type MenuItemCardProps = {
+type StopListFormProps = {
   item: MenuItem;
 };
 
-export const StopListForm = ({ item }: MenuItemCardProps) => {
+export const StopListForm = ({ item }: StopListFormProps) => {
   return (
     <div className="list-form">
       <form action="">
