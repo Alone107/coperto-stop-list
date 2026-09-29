@@ -1,4 +1,10 @@
-export const StopListForm = () => {
+import type { MenuItem } from "../../types/menu";
+
+type MenuItemCardProps = {
+  item: MenuItem;
+};
+
+export const StopListForm = ({ item }: MenuItemCardProps) => {
   return (
     <div className="list-form">
       <form action="">
@@ -20,23 +26,27 @@ export const StopListForm = () => {
           </div>
         </div>
         <div className="form-row">
-          <label htmlFor="">Причина</label>
-          <select name="" id="">
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
+          <label htmlFor="reason">Причина</label>
+          <select name="" id="reason">
+            <option value="" disabled>
+              Выберите причину
+            </option>
+            <option value="out_of_stock">Закончились продукты</option>
+            <option value="bad_quality">Плохое качество партии</option>
+            <option value="no_cook">Нет повара на станции</option>
+            <option value="other">Другое</option>
           </select>
         </div>
         <div className="form-row">
-          <label htmlFor="">Комментарий</label>
-          <textarea name="" id=""></textarea>
+          <label htmlFor="comment">Комментарий</label>
+          <textarea name="" id="comment"></textarea>
         </div>
         <div className="form-row">
-          <label htmlFor="">Время предполагаемого возврата</label>
-          <input type="date" />
+          <label htmlFor="returnAt">Время предполагаемого возврата</label>
+          <input type="time" id="returnAt" />
         </div>
         <div className="buttons">
-          <button type="reset" className="btn-reset btn">
+          <button type="button" className="btn-reset btn">
             Отмена
           </button>
           <button type="submit" className="btn btn-orange">
