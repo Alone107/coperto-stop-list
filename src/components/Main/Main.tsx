@@ -3,10 +3,13 @@ import menu from "../../data/menu.json";
 import type { MenuItem } from "../../types/menu";
 import { Filters } from "../Filters/Filters";
 import { StopList } from "../StopList/StopList";
+import React from "react";
 
 const menuItems = menu as MenuItem[];
 
 export const Main = () => {
+  const [search, setSearch] = React.useState("");
+
   return (
     <main className="main">
       <div className="container">
