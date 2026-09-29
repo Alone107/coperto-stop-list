@@ -16,6 +16,14 @@ const stopListSlice = createSlice({
   initialState,
   reducers: {
     addToStopList(state, action: PayloadAction<StopListEntry>) {
+      const alreadyExists = state.entries.some(
+        (entry) => entry.itemId === action.payload.itemId,
+      );
+
+      if (alreadyExists) {
+        return;
+      }
+
       state.entries.push(action.payload);
     },
     selectItem(state, action: PayloadAction<number | null>) {

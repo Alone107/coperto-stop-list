@@ -1,6 +1,9 @@
-import type { FiltersProps } from "../Filters/Filters";
+type SearchProps = {
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+};
 
-export const Search = ({ search, setSearch }: FiltersProps) => {
+export const Search = ({ search, setSearch }: SearchProps) => {
   return (
     <div className="search">
       <input

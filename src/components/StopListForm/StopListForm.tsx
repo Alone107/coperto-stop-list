@@ -109,8 +109,9 @@ export const StopListForm = ({ item }: StopListFormProps) => {
             <option value="no_cook">Нет повара на станции</option>
             <option value="other">Другое</option>
           </select>
+          {errors.reason && <div className="error-text">{errors.reason}</div>}
         </div>
-        {errors.reason && <div className="error-text">{errors.reason}</div>}
+
         <div className="form-row">
           <label htmlFor="comment">Комментарий</label>
           <textarea
@@ -120,8 +121,9 @@ export const StopListForm = ({ item }: StopListFormProps) => {
             id="comment"
             maxLength={200}
           ></textarea>
+          {errors.comment && <div className="error-text">{errors.comment}</div>}
         </div>
-        {errors.comment && <div className="error-text">{errors.comment}</div>}
+
         <div className="form-row">
           <label htmlFor="returnAt">Время предполагаемого возврата</label>
           <input
@@ -130,8 +132,11 @@ export const StopListForm = ({ item }: StopListFormProps) => {
             onChange={(event) => setReturnAt(event.target.value)}
             id="returnAt"
           />
+          {errors.returnAt && (
+            <div className="error-text">{errors.returnAt}</div>
+          )}
         </div>
-        {errors.returnAt && <div className="error-text">{errors.returnAt}</div>}
+
         <div className="buttons">
           <button
             type="button"
