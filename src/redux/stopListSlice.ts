@@ -21,9 +21,15 @@ const stopListSlice = createSlice({
     selectItem(state, action: PayloadAction<number | null>) {
       state.selectedItemId = action.payload;
     },
+    removeFromStopList(state, action: PayloadAction<number>) {
+      state.entries = state.entries.filter(
+        (entry) => entry.itemId !== action.payload,
+      );
+    },
   },
 });
 
-export const { addToStopList, selectItem } = stopListSlice.actions;
+export const { addToStopList, selectItem, removeFromStopList } =
+  stopListSlice.actions;
 
 export default stopListSlice.reducer;
