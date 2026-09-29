@@ -46,8 +46,10 @@ export const StopListForm = ({ item }: StopListFormProps) => {
           <label htmlFor="reason">Причина</label>
           <select
             name=""
-            value={reason}
-            onChange={(event) => setReason(event.target.value)}
+            value={reason ?? ""}
+            onChange={(event) =>
+              setReason(event.target.value as StopListEntry["reason"])
+            }
             id="reason"
           >
             <option value="out_of_stock">Закончились продукты</option>
