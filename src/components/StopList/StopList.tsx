@@ -1,6 +1,13 @@
+import { useSelector } from "react-redux";
 import { StopListItem } from "../StopListItem/StopListItem";
+import type { RootState } from "../../redux/store";
 
 export const StopList = () => {
+  const menuItems = useSelector((state: RootState) => state.menu.items);
+  const stopListEntries = useSelector(
+    (state: RootState) => state.stopList.entries,
+  );
+
   return (
     <div className="stop-lists">
       <div className="stop-list-wrapper">
@@ -9,10 +16,14 @@ export const StopList = () => {
           <p>Позиции, которые временно недоступны для продажи</p>
         </div>
         <div className="stop-list-right">
-          <span>В стоп листе</span> 3 из 12
+          <span>В стоп листе</span> {stopListEntries.length} из{" "}
+          {menuItems.length}
         </div>
       </div>
-      <StopListItem />
+
+      {stopListEntries.map((item) => (
+        <StopListItem key={item.id} item={item} />
+      ))}
     </div>
   );
 };
