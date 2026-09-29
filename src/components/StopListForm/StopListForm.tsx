@@ -10,6 +10,12 @@ type StopListFormProps = {
 };
 
 export const StopListForm = ({ item }: StopListFormProps) => {
+  const [errors, setErrors] = React.useState({
+    reason: "",
+    comment: "",
+    returnAt: "",
+  });
+
   const dispatch = useDispatch();
 
   const [reason, setReason] = React.useState<StopListEntry["reason"] | null>(
@@ -29,16 +35,23 @@ export const StopListForm = ({ item }: StopListFormProps) => {
 
     if (reason === null) {
       newErrors.reason = "Выберите причину";
-      return;
     }
 
     if (returnAt === "") {
-      newErrors.returnAt = "Выберите дату";
-      return;
+      newErrors.returnAt = "Выберите время";
     }
 
     if (reason === "other" && comment.trim().length < 10) {
-      newErrors.comment = "Назовите причину";
+      newErrors.comment = "Комментарий должен содержать минимум 10 символов";
+    }
+
+    setErrors(newErrors);
+
+    const hasErrors = Object.values(newErrors).some(
+      (error) => error.length > 0,
+    );
+
+    if (hasErrors) {
       return;
     }
 
