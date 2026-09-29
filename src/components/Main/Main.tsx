@@ -10,6 +10,10 @@ const menuItems = menu as MenuItem[];
 export const Main = () => {
   const [search, setSearch] = React.useState("");
 
+  const filteredItems = menuItems.filter((item) =>
+    item.name.toLowerCase().includes(search.toLowerCase()),
+  );
+
   return (
     <main className="main">
       <div className="container">
@@ -20,7 +24,7 @@ export const Main = () => {
               Все доступные позиции, которые сейчас в продаже
             </p>
             <Filters search={search} setSearch={setSearch} />
-            <MenuList items={menuItems} />
+            <MenuList items={filteredItems} />
           </div>
           <div className="stop-list">
             <StopList />

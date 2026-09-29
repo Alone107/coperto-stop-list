@@ -5,7 +5,7 @@ export const Search = ({ search, setSearch }: FiltersProps) => {
     <div className="search">
       <input
         value={search}
-        onChange={setSearch(value)}
+        onChange={(event) => setSearch(event.target.value)}
         type="search"
         placeholder="Найти блюдо..."
         className="search__input"
