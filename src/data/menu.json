@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Пицца Маргарита",
+    "category": "kitchen",
+    "price": 690,
+    "remainder": 10,
+    "imageUrl": "/images/pizza-margherita.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Паста Карбонара",
+    "category": "kitchen",
+    "price": 590,
+    "remainder": 7,
+    "imageUrl": "/images/pasta-carbonara.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Бургер с говядиной",
+    "category": "kitchen",
+    "price": 650,
+    "remainder": 5,
+    "imageUrl": "/images/beef-burger.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Цезарь с курицей",
+    "category": "kitchen",
+    "price": 520,
+    "remainder": 8,
+    "imageUrl": "/images/caesar-salad.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Лосось с овощами",
+    "category": "kitchen",
+    "price": 890,
+    "remainder": 4,
+    "imageUrl": "/images/salmon.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Лимонад цитрусовый",
+    "category": "bar",
+    "price": 290,
+    "remainder": 15,
+    "imageUrl": "/images/citrus-lemonade.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Айс Латте",
+    "category": "bar",
+    "price": 320,
+    "remainder": 12,
+    "imageUrl": "/images/ice-latte.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Морс ягодный",
+    "category": "bar",
+    "price": 240,
+    "remainder": 18,
+    "imageUrl": "/images/berry-mors.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Чизкейк",
+    "category": "dessert",
+    "price": 390,
+    "remainder": 6,
+    "imageUrl": "/images/cheesecake.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Тирамису",
+    "category": "dessert",
+    "price": 420,
+    "remainder": 5,
+    "imageUrl": "/images/tiramisu.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Шоколадный фондан",
+    "category": "dessert",
+    "price": 450,
+    "remainder": 3,
+    "imageUrl": "/images/chocolate-fondant.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Ягодный тарт",
+    "category": "dessert",
+    "price": 410,
+    "remainder": 7,
+    "imageUrl": "/images/berry-tart.jpg"
+  }
+]
