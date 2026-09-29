@@ -1,14 +1,14 @@
 import type { MenuItem } from "../../types/menu";
 
-type MenuItemCard = {
+type MenuItemCardProps = {
   item: MenuItem;
 };
 
-export const MenuItemCard = ({ item }: MenuItemCard) => {
+export const MenuItemCard = ({ item }: MenuItemCardProps) => {
   return (
     <div className="card">
       <div className="card-img">
-        <img src={item.imageUrl} alt="" />
+        <img src={item.imageUrl} alt={item.name} />
       </div>
       <div className="card-info">
         <h3 className="card-info-name">{item.name}</h3>
