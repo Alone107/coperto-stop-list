@@ -88,7 +88,6 @@ export const StopListForm = ({ item }: StopListFormProps) => {
       }}
     >
       <form
-        action=""
         onClick={(event) => event.stopPropagation()}
         onSubmit={handleSubmit}
       >
@@ -119,7 +118,6 @@ export const StopListForm = ({ item }: StopListFormProps) => {
         <div className={`form-row ${errors.reason ? "is-error" : ""}`}>
           <label htmlFor="reason">Причина</label>
           <select
-            name=""
             value={reason ?? ""}
             onChange={(event) =>
               setReason(event.target.value as StopListEntry["reason"])
@@ -140,7 +138,6 @@ export const StopListForm = ({ item }: StopListFormProps) => {
         <div className={`form-row ${errors.comment ? "is-error" : ""}`}>
           <label htmlFor="comment">Комментарий</label>
           <textarea
-            name=""
             value={comment}
             onChange={(event) => setComment(event.target.value)}
             id="comment"
