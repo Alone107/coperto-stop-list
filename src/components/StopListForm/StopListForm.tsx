@@ -21,15 +21,24 @@ export const StopListForm = ({ item }: StopListFormProps) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const newErrors = {
+      reason: "",
+      comment: "",
+      returnAt: "",
+    };
+
     if (reason === null) {
+      newErrors.reason = "Выберите причину";
       return;
     }
 
     if (returnAt === "") {
+      newErrors.returnAt = "Выберите дату";
       return;
     }
 
     if (reason === "other" && comment.trim().length < 10) {
+      newErrors.comment = "Назовите причину";
       return;
     }
 
