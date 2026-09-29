@@ -7,7 +7,7 @@ type MenuState = {
 };
 
 const initialState: MenuState = {
-  items: menuData,
+  items: menuData as MenuItem[],
 };
 
 const menuSlice = createSlice({

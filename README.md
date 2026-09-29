@@ -1,32 +1,41 @@
-# React + TypeScript + Vite
+# Coperto Stop List
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Тестовое задание на позицию Trainee Frontend Developer.
 
-Currently, two official plugins are available:
+Приложение для управления стоп-листом ресторана. Пользователь может искать и фильтровать позиции меню, временно добавлять блюда в стоп-лист с указанием причины и времени возврата, а затем возвращать их обратно в меню.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Стек
 
-## React Compiler
+- React
+- TypeScript
+- Redux Toolkit
+- React Redux
+- SCSS
+- Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Запуск проекта
 
-## Expanding the Oxlint configuration
+Установить зависимости:
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Запустить проект в режиме разработки:
+
+```bash
+npm run dev
+```
+
+Собрать production-версию:
+
+```bash
+npm run build
+```
+
+Меню и стоп-лист хранятся в Redux Toolkit, чтобы общее состояние приложения находилось в одном месте и не передавалось через несколько уровней компонентов(зачем лишний props driling). Запись стоп-листа хранит только itemId и данные о временной недоступности позиции, а информация о самом блюде берётся из общего списка меню.
+Для сохранения состояния между перезагрузками стоп-лист синхронизируется с localStorage. Для анимаций используется SCSS без дополнительных библиотек.
+
+Что можно улучшить
+
+Более полноценные exit-анимации при удалении позиции из стоп-листа и не только эту, некторые бы переделал. Еще хотел добавить календарь, чтоб можно было смотреть и на другие дни.

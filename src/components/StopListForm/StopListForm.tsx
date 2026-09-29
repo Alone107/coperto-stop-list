@@ -75,7 +75,7 @@ export const StopListForm = ({ item }: StopListFormProps) => {
     setTimeout(() => {
       dispatch(addToStopList(newEntry));
       dispatch(selectItem(null));
-    }, 1000);
+    }, 650);
   };
 
   return (
@@ -107,7 +107,7 @@ export const StopListForm = ({ item }: StopListFormProps) => {
           </div>
           <div className="card-form-info">
             <h3 className="card-form-info-name">{item.name}</h3>
-            <div className="card-info-category">
+            <div className="card-form-info-category">
               {categoryLabels[item.category]}
             </div>
             <div className="card-form-info-price">{item.price} ₽</div>
@@ -165,6 +165,7 @@ export const StopListForm = ({ item }: StopListFormProps) => {
         <div className="buttons">
           <button
             type="button"
+            disabled={isSubmitting}
             onClick={() => dispatch(selectItem(null))}
             className="btn-reset btn"
           >
