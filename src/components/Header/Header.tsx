@@ -1,17 +1,13 @@
 import React from "react";
 
-interface Props {
-  className?: string;
-}
-
-export const Header: React.FC<Props> = ({ className }) => {
+export const Header = () => {
   return (
-    <header className={className}>
+    <header className="header">
       <div className="container">
         <div className="header-wrapper">
           <div className="header-left">
-            <a href="" className="logo">
-              <img src="" alt="" />
+            <a href="/" className="logo">
+              COPERTO
             </a>
             <span>Ресторан</span>
           </div>
