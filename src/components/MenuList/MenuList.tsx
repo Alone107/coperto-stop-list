@@ -8,9 +8,11 @@ type MenuListProps = {
 export const MenuList = ({ items }: MenuListProps) => {
   return (
     <div className="menu-list">
-      {items.map((item) => (
-        <MenuItemCard key={item.id} item={item} />
-      ))}
+      {items.length > 0 ? (
+        items.map((item) => <MenuItemCard key={item.id} item={item} />)
+      ) : (
+        <div className="menu-list__empty">Ничего не найдено</div>
+      )}
     </div>
   );
 };

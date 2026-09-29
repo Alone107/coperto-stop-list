@@ -15,28 +15,28 @@ export const CategoryFilter = ({
         <button
           type="button"
           onClick={() => setCategory("all")}
-          className={category == "all" ? "tab--active tab" : "tab"}
+          className={category === "all" ? "tab tab--active" : "tab"}
         >
           Все
         </button>
         <button
           type="button"
           onClick={() => setCategory("kitchen")}
-          className={category == "kitchen" ? "tab--active tab" : "tab"}
+          className={category === "kitchen" ? "tab tab--active" : "tab"}
         >
           Кухня
         </button>
         <button
           type="button"
           onClick={() => setCategory("bar")}
-          className={category == "bar" ? "tab--active tab" : "tab"}
+          className={category === "bar" ? "tab tab--active" : "tab"}
         >
           Бар
         </button>
         <button
           type="button"
           onClick={() => setCategory("dessert")}
-          className={category == "dessert" ? "tab--active tab" : "tab"}
+          className={category === "dessert" ? "tab tab--active" : "tab"}
         >
           Десерты
         </button>

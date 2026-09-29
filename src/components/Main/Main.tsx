@@ -1,20 +1,29 @@
 import { MenuList } from "../MenuList/MenuList";
-import menu from "../../data/menu.json";
 import type { MenuItem } from "../../types/menu";
 import { Filters } from "../Filters/Filters";
 import { StopList } from "../StopList/StopList";
 import React from "react";
 import type { Category } from "../../types/category";
 
-const menuItems = menu as MenuItem[];
+import { useSelector } from "react-redux";
+
+import { RootState } from "../../redux/store";
+
+const menuItems = useSelector(useSelector(state.menu.items));
 
 export const Main = () => {
   const [search, setSearch] = React.useState("");
   const [category, setCategory] = React.useState<Category>("all");
 
-  const filteredItems = menuItems.filter((item) =>
-    item.name.toLowerCase().includes(search.toLowerCase()),
-  );
+  const filteredItems = menuItems.filter((item) => {
+    const matchesSearch = item.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    const matchesCategory = category === "all" || item.category === category;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <main className="main">
