@@ -1,4 +1,3 @@
-import React from "react";
 import { MenuItemCard } from "../MenuItemCard/MenuItemCard";
 import type { MenuItem } from "../../types/menu";
 
