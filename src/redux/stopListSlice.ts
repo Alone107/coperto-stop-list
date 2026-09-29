@@ -6,8 +6,10 @@ type StopListState = {
   selectedItemId: number | null;
 };
 
+const savedStopList = localStorage.getItem("stopList");
+
 const initialState: StopListState = {
-  entries: [],
+  entries: savedStopList ? JSON.parse(savedStopList) : [],
   selectedItemId: null,
 };
 
