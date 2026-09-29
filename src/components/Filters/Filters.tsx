@@ -1,9 +1,9 @@
 import { CategoryFilter } from "../CategoryFilter/CategoryFilter";
 import { Search } from "../Search/Search";
 
-interface FiltersProps {
+export interface FiltersProps {
   search: string;
-  setSearch: () => string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const Filters = ({ search, setSearch }: FiltersProps) => {
