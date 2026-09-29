@@ -118,6 +118,7 @@ export const StopListForm = ({ item }: StopListFormProps) => {
             value={comment}
             onChange={(event) => setComment(event.target.value)}
             id="comment"
+            maxLength={200}
           ></textarea>
         </div>
         {errors.comment && <div className="error-text">{errors.comment}</div>}
