@@ -29,6 +29,10 @@ export const StopListForm = ({ item }: StopListFormProps) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    if (isSubmitting) {
+      return;
+    }
+
     const newErrors = {
       reason: "",
       comment: "",
@@ -59,6 +63,10 @@ export const StopListForm = ({ item }: StopListFormProps) => {
 
     setIsSubmitting(true);
 
+    if (hasErrors || reason === null) {
+      return;
+    }
+
     setTimeout(() => {
       const newEntry: StopListEntry = {
         itemId: item.id,
@@ -70,11 +78,7 @@ export const StopListForm = ({ item }: StopListFormProps) => {
 
       dispatch(addToStopList(newEntry));
       dispatch(selectItem(null));
-    }, 350);
-
-    if (isSubmitting) {
-      return;
-    }
+    }, 1000);
   };
 
   return (
