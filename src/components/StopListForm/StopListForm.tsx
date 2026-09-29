@@ -58,10 +58,6 @@ export const StopListForm = ({ item }: StopListFormProps) => {
       (error) => error.length > 0,
     );
 
-    if (hasErrors) {
-      return;
-    }
-
     if (hasErrors || reason === null) {
       return;
     }
@@ -99,6 +95,7 @@ export const StopListForm = ({ item }: StopListFormProps) => {
         <span className="form-title">Форма добавления в стоп-лист</span>
         <button
           type="button"
+          disabled={isSubmitting}
           onClick={() => dispatch(selectItem(null))}
           className="form-close"
         >
@@ -140,7 +137,7 @@ export const StopListForm = ({ item }: StopListFormProps) => {
           {errors.reason && <div className="error-text">{errors.reason}</div>}
         </div>
 
-        <div className={`form-row ${errors.reason ? "is-error" : ""}`}>
+        <div className={`form-row ${errors.comment ? "is-error" : ""}`}>
           <label htmlFor="comment">Комментарий</label>
           <textarea
             name=""
@@ -152,7 +149,7 @@ export const StopListForm = ({ item }: StopListFormProps) => {
           {errors.comment && <div className="error-text">{errors.comment}</div>}
         </div>
 
-        <div className={`form-row ${errors.reason ? "is-error" : ""}`}>
+        <div className={`form-row ${errors.returnAt ? "is-error" : ""}`}>
           <label htmlFor="returnAt">Время предполагаемого возврата</label>
           <input
             type="time"

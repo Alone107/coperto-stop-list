@@ -16,8 +16,10 @@ export const StopList = () => {
           <p>Позиции, которые временно недоступны для продажи</p>
         </div>
         <div className="stop-list-right">
-          <span>В стоп листе</span> {stopListEntries.length} из{" "}
-          {menuItems.length}
+          В стоп-листе:
+          <strong>
+            {stopListEntries.length} из {menuItems.length}
+          </strong>
         </div>
       </div>
 
