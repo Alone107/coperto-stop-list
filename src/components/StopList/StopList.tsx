@@ -30,7 +30,9 @@ export const StopList = () => {
           return null;
         }
 
-        return <StopListItem item={menuItem} entry={entry} />;
+        return (
+          <StopListItem key={entry.itemId} item={menuItem} entry={entry} />
+        );
       })}
       {stopListEntries.length === 0 && (
         <div className="stop-list__empty">
