@@ -21,9 +21,15 @@ export const StopList = () => {
         </div>
       </div>
 
-      {stopListEntries.map((entry) => (
-        <StopListItem key={entry.itemId} entry={entry} />
-      ))}
+      {stopListEntries.map((entry) => {
+        const menuItem = menuItems.find((item) => item.id === entry.itemId);
+
+        if (!menuItem) {
+          return null;
+        }
+
+        return <StopListItem item={menuItem} entry={entry} />;
+      })}
     </div>
   );
 };
