@@ -4,5 +4,4 @@ export type StopListEntry = {
   comment: string;
   returnAt: string;
   createdAt: string;
-  imageUrl?: string;
 };

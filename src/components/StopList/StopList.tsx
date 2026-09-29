@@ -21,8 +21,8 @@ export const StopList = () => {
         </div>
       </div>
 
-      {stopListEntries.map((item) => (
-        <StopListItem key={item.id} item={item} />
+      {stopListEntries.map((entry) => (
+        <StopListItem key={entry.itemId} entry={entry} />
       ))}
     </div>
   );
