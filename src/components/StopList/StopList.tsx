@@ -21,17 +21,16 @@ export const StopList = () => {
         </div>
       </div>
 
-      {stopListEntries &&
-        stopListEntries.map((entry) => {
-          const menuItem = menuItems.find((item) => item.id === entry.itemId);
+      {stopListEntries.map((entry) => {
+        const menuItem = menuItems.find((item) => item.id === entry.itemId);
 
-          if (!menuItem) {
-            return null;
-          }
+        if (!menuItem) {
+          return null;
+        }
 
-          return <StopListItem item={menuItem} entry={entry} />;
-        })}
-      {stopListEntries.length == 0 && <div>Все позиции в продаже</div>}
+        return <StopListItem item={menuItem} entry={entry} />;
+      })}
+      {stopListEntries.length === 0 && <div>Все позиции в продаже</div>}
     </div>
   );
 };
