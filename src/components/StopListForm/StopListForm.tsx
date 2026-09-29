@@ -1,15 +1,24 @@
+import { selectItem } from "../../redux/stopListSlice";
 import type { MenuItem } from "../../types/menu";
+
+import { useDispatch } from "react-redux";
 
 type StopListFormProps = {
   item: MenuItem;
 };
 
 export const StopListForm = ({ item }: StopListFormProps) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="list-form">
       <form action="">
         <span className="form-title">Форма добавления в стоп-лист</span>
-        <button type="button" className="form-close">
+        <button
+          type="button"
+          onClick={() => dispatch(selectItem(null))}
+          className="form-close"
+        >
           x
         </button>
         <div className="card-form">
@@ -46,7 +55,11 @@ export const StopListForm = ({ item }: StopListFormProps) => {
           <input type="time" id="returnAt" />
         </div>
         <div className="buttons">
-          <button type="button" className="btn-reset btn">
+          <button
+            type="button"
+            onClick={() => dispatch(selectItem(null))}
+            className="btn-reset btn"
+          >
             Отмена
           </button>
           <button type="submit" className="btn btn-orange">
