@@ -9,9 +9,6 @@ export const Header = () => {
             </a>
             <span>Ресторан</span>
           </div>
-          <div className="header-right">
-            <div className="header-data"></div>
-          </div>
         </div>
       </div>
     </header>

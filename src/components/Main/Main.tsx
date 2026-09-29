@@ -12,9 +12,9 @@ export const Main = () => {
         <div className="main-wrapper">
           <div className="menu">
             <h2 className="menu-title">Меню ресторана</h2>
-            <span className="menu-text">
+            <p className="menu-text">
               Все доступные позиции, которые сейчас в продаже
-            </span>
+            </p>
             <Filters />
             <MenuList items={menuItems} />
           </div>
