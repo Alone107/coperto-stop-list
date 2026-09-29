@@ -1,10 +1,15 @@
 import { CategoryFilter } from "../CategoryFilter/CategoryFilter";
 import { Search } from "../Search/Search";
 
-export const Filters = () => {
+interface FiltersProps {
+  search: string;
+  setSearch: () => string;
+}
+
+export const Filters = ({ search, setSearch }: FiltersProps) => {
   return (
     <div className="filters">
-      <Search />
+      <Search search={search} setSearch={setSearch} />
       <CategoryFilter />
     </div>
   );

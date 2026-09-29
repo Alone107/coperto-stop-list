@@ -19,7 +19,7 @@ export const Main = () => {
             <p className="menu-text">
               Все доступные позиции, которые сейчас в продаже
             </p>
-            <Filters />
+            <Filters search={search} setSearch={setSearch} />
             <MenuList items={menuItems} />
           </div>
           <div className="stop-list">
