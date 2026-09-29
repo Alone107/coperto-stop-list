@@ -1,17 +1,12 @@
 import type { MenuItem } from "../../types/menu";
-import { useDispatch, UseDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import type { RootState } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { selectItem } from "../../redux/stopListSlice";
 
 type MenuItemCardProps = {
   item: MenuItem;
 };
 
 export const MenuItemCard = ({ item }: MenuItemCardProps) => {
-  const selectItem = useSelector(
-    (state: RootState) => state.stopList.selectedItemId,
-  );
-
   const dispatch = useDispatch();
 
   return (
