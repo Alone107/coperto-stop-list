@@ -4,4 +4,5 @@ export type MenuItem = {
   category: "kitchen" | "bar" | "dessert";
   price: number;
   remainder: number;
+  imageUrl: string;
 };
