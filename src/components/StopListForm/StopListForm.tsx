@@ -1,5 +1,5 @@
 import React from "react";
-import { selectItem } from "../../redux/stopListSlice";
+import { addToStopList, selectItem } from "../../redux/stopListSlice";
 import type { MenuItem } from "../../types/menu";
 
 import { useDispatch } from "react-redux";
@@ -18,9 +18,38 @@ export const StopListForm = ({ item }: StopListFormProps) => {
   const [comment, setComment] = React.useState("");
   const [returnAt, setReturnAt] = React.useState("");
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (reason === null) {
+      return;
+    }
+
+    if (returnAt === "") {
+      return;
+    }
+
+    if (reason === "other" && comment.trim().length < 10) {
+      return;
+    }
+
+    const newEntry: StopListEntry = {
+      itemId: item.id,
+      imageUrl: item.imageUrl,
+      reason: reason,
+      comment: comment,
+      returnAt: returnAt,
+      createdAt: new Date().toISOString(),
+    };
+
+    dispatch(addToStopList(newEntry));
+
+    // дальше наша логика
+  };
+
   return (
     <div className="list-form">
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <span className="form-title">Форма добавления в стоп-лист</span>
         <button
           type="button"
@@ -52,6 +81,9 @@ export const StopListForm = ({ item }: StopListFormProps) => {
             }
             id="reason"
           >
+            <option value="" disabled>
+              Выберите причину
+            </option>
             <option value="out_of_stock">Закончились продукты</option>
             <option value="bad_quality">Плохое качество партии</option>
             <option value="no_cook">Нет повара на станции</option>
