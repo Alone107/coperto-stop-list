@@ -35,7 +35,6 @@ export const StopListForm = ({ item }: StopListFormProps) => {
 
     const newEntry: StopListEntry = {
       itemId: item.id,
-      imageUrl: item.imageUrl,
       reason: reason,
       comment: comment,
       returnAt: returnAt,
@@ -43,6 +42,7 @@ export const StopListForm = ({ item }: StopListFormProps) => {
     };
 
     dispatch(addToStopList(newEntry));
+    dispatch(selectItem(null));
 
     // дальше наша логика
   };
