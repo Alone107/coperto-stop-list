@@ -1,7 +1,9 @@
+import React from "react";
 import { selectItem } from "../../redux/stopListSlice";
 import type { MenuItem } from "../../types/menu";
 
 import { useDispatch } from "react-redux";
+import type { StopListEntry } from "../../types/stopListEntry";
 
 type StopListFormProps = {
   item: MenuItem;
@@ -9,6 +11,12 @@ type StopListFormProps = {
 
 export const StopListForm = ({ item }: StopListFormProps) => {
   const dispatch = useDispatch();
+
+  const [reason, setReason] = React.useState<StopListEntry["reason"] | null>(
+    null,
+  );
+  const [comment, setComment] = React.useState("");
+  const [returnAt, setReturnAt] = React.useState("");
 
   return (
     <div className="list-form">
@@ -36,10 +44,12 @@ export const StopListForm = ({ item }: StopListFormProps) => {
         </div>
         <div className="form-row">
           <label htmlFor="reason">Причина</label>
-          <select name="" id="reason">
-            <option value="" disabled>
-              Выберите причину
-            </option>
+          <select
+            name=""
+            value={reason}
+            onChange={(event) => setReason(event.target.value)}
+            id="reason"
+          >
             <option value="out_of_stock">Закончились продукты</option>
             <option value="bad_quality">Плохое качество партии</option>
             <option value="no_cook">Нет повара на станции</option>
@@ -48,11 +58,21 @@ export const StopListForm = ({ item }: StopListFormProps) => {
         </div>
         <div className="form-row">
           <label htmlFor="comment">Комментарий</label>
-          <textarea name="" id="comment"></textarea>
+          <textarea
+            name=""
+            value={comment}
+            onChange={(event) => setComment(event.target.value)}
+            id="comment"
+          ></textarea>
         </div>
         <div className="form-row">
           <label htmlFor="returnAt">Время предполагаемого возврата</label>
-          <input type="time" id="returnAt" />
+          <input
+            type="time"
+            value={returnAt}
+            onChange={(event) => setReturnAt(event.target.value)}
+            id="returnAt"
+          />
         </div>
         <div className="buttons">
           <button
