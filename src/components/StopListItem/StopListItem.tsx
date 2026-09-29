@@ -1,5 +1,7 @@
+import { removeFromStopList } from "../../redux/stopListSlice";
 import type { MenuItem } from "../../types/menu";
 import type { StopListEntry } from "../../types/stopListEntry";
+import { useDispatch } from "react-redux";
 
 type StopListItemProps = {
   item: MenuItem;
@@ -14,6 +16,8 @@ const reasonLabels: Record<StopListEntry["reason"], string> = {
 };
 
 export const StopListItem = ({ item, entry }: StopListItemProps) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="stop-item">
       <div className="stop-item-img">
@@ -27,7 +31,11 @@ export const StopListItem = ({ item, entry }: StopListItemProps) => {
           Вернётся в меню: {entry.createdAt}
         </div>
       </div>
-      <button type="button" className="btn btn-white">
+      <button
+        type="button"
+        onClick={() => dispatch(removeFromStopList(entry.itemId))}
+        className="btn btn-white"
+      >
         Вернуть в меню
       </button>
     </div>
