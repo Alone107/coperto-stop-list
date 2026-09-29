@@ -7,8 +7,8 @@ export const StopListItem = () => {
       <div className="stop-item-info">
         <h3 className="stop-item-name">Салат с лососем</h3>
         <div className="stop-item-reason">Закончились продукты</div>
-        <div className="stop-item-commentary">Нет свежих овощей</div>
-        <div className="stop-item-returnAt">Сегодня</div>
+        <div className="stop-item-comment">Нет свежих овощей</div>
+        <div className="stop-item-returnAt">Вернётся в меню: 18:30</div>
       </div>
       <button type="button" className="btn btn-white">
         Вернуть в меню
