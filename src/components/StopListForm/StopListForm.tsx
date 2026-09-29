@@ -24,6 +24,8 @@ export const StopListForm = ({ item }: StopListFormProps) => {
   const [comment, setComment] = React.useState("");
   const [returnAt, setReturnAt] = React.useState("");
 
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -55,16 +57,24 @@ export const StopListForm = ({ item }: StopListFormProps) => {
       return;
     }
 
-    const newEntry: StopListEntry = {
-      itemId: item.id,
-      reason: reason,
-      comment: comment,
-      returnAt: returnAt,
-      createdAt: new Date().toISOString(),
-    };
+    setIsSubmitting(true);
 
-    dispatch(addToStopList(newEntry));
-    dispatch(selectItem(null));
+    setTimeout(() => {
+      const newEntry: StopListEntry = {
+        itemId: item.id,
+        reason,
+        comment,
+        returnAt,
+        createdAt: new Date().toISOString(),
+      };
+
+      dispatch(addToStopList(newEntry));
+      dispatch(selectItem(null));
+    }, 350);
+
+    if (isSubmitting) {
+      return;
+    }
   };
 
   return (
@@ -149,8 +159,13 @@ export const StopListForm = ({ item }: StopListFormProps) => {
           >
             Отмена
           </button>
-          <button type="submit" className="btn btn-orange">
-            Добавить в стоп-лист
+          <button
+            type="submit"
+            className="btn btn-orange btn-submit"
+            disabled={isSubmitting}
+          >
+            {isSubmitting && <span className="loader" />}
+            {isSubmitting ? "Добавляем..." : "Добавить в стоп-лист"}
           </button>
         </div>
       </form>
