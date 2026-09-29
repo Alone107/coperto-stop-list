@@ -1,5 +1,9 @@
 import { MenuList } from "../MenuList/MenuList";
 import menu from "../../data/menu.json";
+import type { MenuItem } from "../../types/menu";
+import { Filters } from "../Filters/Filters";
+
+const menuItems = menu as MenuItem[];
 
 export const Main = () => {
   return (
@@ -7,7 +11,12 @@ export const Main = () => {
       <div className="container">
         <div className="main-wrapper">
           <div className="menu">
-            <MenuList items={menu} />
+            <h2 className="menu-title">Меню ресторана</h2>
+            <span className="menu-text">
+              Все доступные позиции, которые сейчас в продаже
+            </span>
+            <Filters />
+            <MenuList items={menuItems} />
           </div>
           <div className="stop-list"></div>
         </div>
