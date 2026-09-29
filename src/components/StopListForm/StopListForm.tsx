@@ -68,8 +68,12 @@ export const StopListForm = ({ item }: StopListFormProps) => {
   };
 
   return (
-    <div className="list-form">
-      <form action="" onSubmit={handleSubmit}>
+    <div className="list-form" onClick={() => dispatch(selectItem(null))}>
+      <form
+        action=""
+        onClick={(event) => event.stopPropagation()}
+        onSubmit={handleSubmit}
+      >
         <span className="form-title">Форма добавления в стоп-лист</span>
         <button
           type="button"
