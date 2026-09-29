@@ -1,17 +1,24 @@
-export const MenuItemCard = () => {
+import type { MenuItem } from "../../types/menu";
+
+export const MenuItemCard: React.FC<MenuItem> = ({
+  name,
+  category,
+  price,
+  remainder,
+  imageUrl,
+}) => {
   return (
     <div className="card">
       <div className="card-img">
-        <img src="" alt="" />
+        <img src={imageUrl} alt="" />
       </div>
       <div className="card-info">
-        <div className="card-info-name">Пицца Маргарита</div>
-        <div className="card-info-category">kitchen</div>
-        <div className="card-info-price">690 рублей</div>
+        <h3 className="card-info-name">{name}</h3>
+        <div className="card-info-category">{category}</div>
+        <div className="card-info-price">{price} ₽</div>
       </div>
-      <div className="card-ostatok">
-        <img src="" alt="" />
-        <div className="card-ostatok-text">12 порций</div>
+      <div className="card-stock">
+        <div className="card-stock-text">{remainder} порций</div>
       </div>
       <button type="button" className="btn btn-orange">
         В стоп-лист
