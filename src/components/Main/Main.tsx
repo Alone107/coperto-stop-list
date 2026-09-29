@@ -7,11 +7,15 @@ import type { Category } from "../../types/category";
 import { useSelector } from "react-redux";
 
 import type { RootState } from "../../redux/store";
-import type { MenuItem } from "../../types/menu";
+import { StopListForm } from "../StopListForm/StopListForm";
 
 export const Main = () => {
   const [search, setSearch] = React.useState("");
   const [category, setCategory] = React.useState<Category>("all");
+
+  const selectedItemId = useSelector(
+    (state: RootState) => state.stopList.selectedItemId,
+  );
 
   const menuItems = useSelector((state: RootState) => state.menu.items);
   const stopListEntries = useSelector(
@@ -31,6 +35,8 @@ export const Main = () => {
 
     return matchesSearch && matchesCategory && isNotInStopList;
   });
+
+  const selectedItem = menuItems.find((item) => item.id === selectedItemId);
 
   return (
     <main className="main">
@@ -54,6 +60,8 @@ export const Main = () => {
           </div>
         </div>
       </div>
+
+      {selectedItem && <StopListForm item={selectedItem} />}
     </main>
   );
 };
